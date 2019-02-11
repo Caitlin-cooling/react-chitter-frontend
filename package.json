@@ -1,5 +1,12 @@
 {
   "name": "chitter-frontend-react",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/serviceWorker.js",
+      "!src/index.js"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
