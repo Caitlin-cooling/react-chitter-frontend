@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Authentication } from './authentication'
-import './App.css';
+import { Authentication } from './Authentication'
 
 export default class App extends Component {
   render() {

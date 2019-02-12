@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { Authentication } from './authentication';
+import App from '../components/App';
+import { Authentication } from '../components/Authentication';
 import { shallow } from 'enzyme';
 
 describe('homepage', () => {

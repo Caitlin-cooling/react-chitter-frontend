@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Authentication, SignUp, SignIn } from './authentication';
+import { Authentication, SignUp, SignIn } from '../components/Authentication';
 import { shallow } from 'enzyme';
 
 describe('Authentication', () => {
