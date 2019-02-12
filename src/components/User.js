@@ -8,6 +8,7 @@ export var User = function(props) {
   } else {
     return <Authentication
       handleSignUp={props.handleSignUp}
+      handleSignIn={props.handleSignIn}
       handleHandleChange={props.handleHandleChange}
       handlePasswordChange={props.handlePasswordChange}
     />

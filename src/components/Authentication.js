@@ -8,7 +8,11 @@ export var Authentication = function(props) {
           handleHandleChange={props.handleHandleChange}
           handlePasswordChange={props.handlePasswordChange}
         />
-        <SignIn/>
+        <SignIn
+          handleSignIn={props.handleSignIn}
+          handleHandleChange={props.handleHandleChange}
+          handlePasswordChange={props.handlePasswordChange}
+        />
       </div>
     );
 }
@@ -24,13 +28,13 @@ export var SignUp = function(props) {
   </div>
 }
 
-export var SignIn = function() {
+export var SignIn = function(props) {
   return <div id="form">
     <form>
       Sign In
-      <input placeholer='Handle'></input>
-      <input placeholer='Password' type='password'></input>
-      <button>Submit</button>
+      <input onChange={props.handleHandleChange} placeholer='Handle'></input>
+      <input onChange={props.handlePasswordChange} placeholer='Password' type='password'></input>
+      <button onClick={props.handleSignIn}>Submit</button>
     </form>
   </div>
 }
