@@ -1,7 +1,5 @@
 # Chitter Frontend
-We are going to write a small Twitter clone that will allow the users to post messages to a public stream.
-
-The scenario is similar to the Chitter Challenge, except someone has already built a backend API for you and hosted it on Heroku.
+A small Twitter clone that will allow the users to post messages to a public stream. This is the frontend to a backend API that is hosted it on Heroku.
 
 Your task is to build a front-end single-page-app to interface with this API. You can do this in any framework you like, or in pure Javascript. The API documentation is [here](https://github.com/makersacademy/chitter_api_backend).
 
@@ -19,19 +17,25 @@ We are looking for well tested, easy to read, easy to change code. This is more 
 
 Note that others may be doing the same task at the same time, so the data may change as you are using it.
 
-## Available Scripts
+## Using the app
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. `git clone https://github.com/Caitlin-cooling/react-chitter-frontend.git`
+2. `cd react-chitter-frontend`
+3. `npm start`
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Testing
+
+Tests are written using Jest and Enzyme, to run tests use `npm test`. To run tests and see coverage use `npm test -- --coverage`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+## Linting
+ESLint has been used to lint, and any errors will show in the console while the server is running.
+
+## Backlog
+* Implement secure sign in and sign up
+* Snap shot testing
