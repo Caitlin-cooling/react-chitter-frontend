@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { User } from './User'
-import { ViewPeeps } from './ViewPeeps'
+import { Peeps } from './Peeps'
 
 export default class App extends Component {
   constructor(props) {
@@ -96,7 +96,7 @@ export default class App extends Component {
           handleHandleChange={this.handleHandleChange}
           handlePasswordChange={this.handlePasswordChange}
         />
-        <ViewPeeps handleShowPeeps={this.handleShowPeeps}/>
+        <Peeps handleShowPeeps={this.handleShowPeeps}/>
       </div>
     );
   }
