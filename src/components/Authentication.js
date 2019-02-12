@@ -6,6 +6,7 @@ export var Authentication = function(props) {
         <SignUp
           handleSignUp={props.handleSignUp}
           handleHandleChange={props.handleHandleChange}
+          handlePasswordChange={props.handlePasswordChange}
         />
         <SignIn/>
       </div>
@@ -17,7 +18,7 @@ export var SignUp = function(props) {
     <form>
       Sign Up
       <input onChange={props.handleHandleChange} placeholer='Handle'></input>
-      <input placeholer='Password' type='password'></input>
+      <input onChange={props.handlePasswordChange} placeholer='Password' type='password'></input>
       <button onClick={props.handleSignUp}>Submit</button>
     </form>
   </div>

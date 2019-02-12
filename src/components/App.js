@@ -6,16 +6,19 @@ export default class App extends Component {
     super(props);
     this.state = {
       handle: null,
+      password: '',
       error: null,
-      handleInProgress: ''
+      handleInProgress: '',
+      passwordProgress: ''
     }
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleHandleChange = this.handleHandleChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleSignUp(e) {
     const handle = this.state.handleInProgress
-    const password = 'Caitlin'
+    const password = this.state.passwordProgress
     e.preventDefault();
 
     fetch('https://chitter-backend-api.herokuapp.com/users', {
@@ -40,6 +43,10 @@ export default class App extends Component {
     this.setState({handleInProgress:event.target.value})
   }
 
+  handlePasswordChange(event) {
+    this.setState({passwordProgress:event.target.value})
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,6 +55,7 @@ export default class App extends Component {
           handle={this.state.handle}
           handleSignUp={this.handleSignUp}
           handleHandleChange={this.handleHandleChange}
+          handlePasswordChange={this.handlePasswordChange}
         />
       </div>
     );

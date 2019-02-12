@@ -9,6 +9,7 @@ export var User = function(props) {
     return <Authentication
       handleSignUp={props.handleSignUp}
       handleHandleChange={props.handleHandleChange}
+      handlePasswordChange={props.handlePasswordChange}
     />
   }
 }
