@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
 import { Authentication } from '../components/Authentication';
+import { User } from '../components/User';
 import { shallow } from 'enzyme';
 
-describe('homepage', () => {
+describe('App', () => {
   const div = shallow(<App/>)
 
   it('renders without crashing', () => {
@@ -18,7 +19,7 @@ describe('homepage', () => {
     expect(div.contains(chitter)).toEqual(true);
   });
 
-  it('shows sign up and in options', () => {
-    expect(div).toContainReact(<Authentication/>)
+  it('shows user component', () => {
+    expect(div).toContainReact(<User/>)
   });
 });

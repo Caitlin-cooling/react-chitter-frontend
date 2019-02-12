@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 
-export class Authentication extends Component {
-  render() {
+export var Authentication = function(props) {
     return(
       <div>
-        <SignUp/>
+        <SignUp
+          handleSignUp={props.handleSignUp}
+          handleHandleChange={props.handleHandleChange}
+        />
         <SignIn/>
       </div>
     );
-  }
 }
 
-export var SignUp = function() {
+export var SignUp = function(props) {
   return <div id="form">
     <form>
       Sign Up
-      <input placeholer='Handle'></input>
+      <input onChange={props.handleHandleChange} placeholer='Handle'></input>
       <input placeholer='Password' type='password'></input>
-      <button>Submit</button>
+      <button onClick={props.handleSignUp}>Submit</button>
     </form>
   </div>
 }
