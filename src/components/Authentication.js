@@ -16,7 +16,7 @@ export var SignUp = function() {
     <form>
       Sign Up
       <input placeholer='Handle'></input>
-      <input placeholer='Password'></input>
+      <input placeholer='Password' type='password'></input>
       <button>Submit</button>
     </form>
   </div>
@@ -27,7 +27,7 @@ export var SignIn = function() {
     <form>
       Sign In
       <input placeholer='Handle'></input>
-      <input placeholer='Password'></input>
+      <input placeholer='Password' type='password'></input>
       <button>Submit</button>
     </form>
   </div>
