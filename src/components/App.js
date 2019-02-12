@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { User } from './User'
+import { ViewPeeps } from './ViewPeeps'
 
 export default class App extends Component {
   constructor(props) {
@@ -63,6 +64,19 @@ export default class App extends Component {
    )
   }
 
+  handleShowPeeps(e) {
+    e.preventDefault();
+    fetch('https://chitter-backend-api.herokuapp.com/peeps')
+    .then(res => res.json())
+    .then(
+      (peeps) => {
+        console.log('peeps', peeps)
+      },
+      (error) => {
+        console.error('Error', error);
+    });
+  }
+
   handleHandleChange(event) {
     this.setState({handleInProgress:event.target.value})
   }
@@ -82,6 +96,7 @@ export default class App extends Component {
           handleHandleChange={this.handleHandleChange}
           handlePasswordChange={this.handlePasswordChange}
         />
+        <ViewPeeps handleShowPeeps={this.handleShowPeeps}/>
       </div>
     );
   }
