@@ -2,18 +2,17 @@ import React from 'react';
 
 export var Peeps = function(props) {
     if(props.postPeepState) {
-      return <div><PostPeepForm/></div>
+      return <PostPeepForm/>
     } else if (props.showPeepsState) {
-      return <div><ShowPeeps
+      return <ShowPeeps
           isLoaded={props.isLoaded}
           peeps={props.peeps}
         />
-      </div>
     } else {
-       return <div>
-        <ViewPeeps handleShowPeeps={props.handleShowPeeps}/>
-        <PostPeep triggerPostPeepState={props.triggerPostPeepState}/>
-      </div>
+       return [
+          <ViewPeeps handleShowPeeps={props.handleShowPeeps}/>,
+          <PostPeep triggerPostPeepState={props.triggerPostPeepState}/>
+      ];
     }
 }
 
@@ -38,8 +37,8 @@ export var PostPeep = function(props) {
 }
 
 export var PostPeepForm = function(props) {
-  return <div>
-    <textarea placeholer='What would you like to say?'></textarea>
+  return [
+    <textarea placeholer='What would you like to say?'></textarea>,
     <button>Peep!</button>
-  </div>
+  ];
 }
