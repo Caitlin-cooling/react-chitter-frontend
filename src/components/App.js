@@ -63,11 +63,17 @@ export default class App extends Component {
    .then (
      (result) => {
        this.setState({handle: handle});
+       this.setLocalStorage(result)
      },
      (error) => {
        this.setState({error: error});
      }
    )
+  }
+
+  setLocalStorage(json) {
+    localStorage.setItem('user_id', json.user_id);
+    localStorage.setItem('session_key', json.session_key);
   }
 
   handleShowPeeps(e) {
