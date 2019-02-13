@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import '../globals'
 import { Greeting } from '../components/Greeting.js'
 import { shallow } from 'enzyme';
 

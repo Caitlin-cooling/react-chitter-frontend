@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import '../globals'
 import App from '../components/App';
 import { Authentication, SignUp, SignIn } from '../components/Authentication';
 import { Greeting } from '../components/Greeting.js'

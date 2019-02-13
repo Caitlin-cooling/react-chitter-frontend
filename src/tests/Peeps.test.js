@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import '../globals'
 import { Peeps, ViewPeeps, PostPeep, PostPeepForm , ShowPeeps} from '../components/Peeps'
 import { shallow } from 'enzyme';
 
