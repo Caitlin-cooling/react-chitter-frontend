@@ -1,7 +1,6 @@
 import React from 'react';
 
 export var Peeps = function(props) {
-  console.log(props)
     if(props.postPeepState) {
       return <div>
         <PostPeepForm/>
@@ -26,7 +25,11 @@ export var ShowPeeps = function(props) {
   if (!props.isLoaded) {
     return <div>Loading...</div>
   } else {
-    return <ul><li>{props.peeps}</li></ul>
+    return <ul>
+     {props.peeps.map(peep => (
+       <li key={peep.id}>{peep.body}</li>
+     ))}
+    </ul>
   }
 }
 

@@ -72,7 +72,6 @@ export default class App extends Component {
 
   handleShowPeeps(e) {
     e.preventDefault();
-    console.log('peeps handled')
 
     fetch('https://chitter-backend-api.herokuapp.com/peeps')
     .then(res => res.json())
