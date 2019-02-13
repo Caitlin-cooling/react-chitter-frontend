@@ -39,3 +39,5 @@ ESLint has been used to lint, and any errors will show in the console while the 
 ## Backlog
 * Implement secure sign in and sign up
 * Snap shot testing
+* Feature Testing
+* Handle errors
