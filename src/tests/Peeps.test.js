@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 describe('Peeps', () => {
   const peeps = shallow(<Peeps postPeepState={false}/>)
   const postPeeps = shallow(<Peeps postPeepState={true}/>)
-  const showPeeps = shallow(<Peeps peeps='this is a peep'/>)
+  const showPeeps = shallow(<Peeps showPeepsState={true}/>)
 
   it('returns ViewPeeps component when postPeepState is false', () => {
     expect(peeps).toContainReact(<ViewPeeps/>)
@@ -20,7 +20,7 @@ describe('Peeps', () => {
     expect(postPeeps).toContainReact(<PostPeepForm/>)
   });
 
-  it('returns peeps when peeps is not null', () => {
+  it('returns peeps when show peep state is true', () => {
     expect(showPeeps).toContainReact(<ShowPeeps/>)
   });
 });
@@ -50,9 +50,14 @@ describe('PostPeepForm', () => {
 });
 
 describe('ShowPeeps', () => {
-  const showPeeps = shallow(<ShowPeeps peeps='hi there'/>)
+  const showPeeps = shallow(<ShowPeeps peeps={ [{id: 521, body: "hi there"}] } isLoaded={true}/>)
+  const loadingPeeps = shallow(<ShowPeeps peeps={ [{id: 521, body: "hi there"}] } isLoaded={false}/>)
 
-  it('returns a list of peeps', () => {
+  it('returns a list of peeps when the page has loaded', () => {
     expect(showPeeps).toContainReact(<ul><li>hi there</li></ul>)
+  });
+
+  it('returns loading when the page has not loaded', () => {
+    expect(loadingPeeps).toContainReact(<div>Loading...</div>)
   });
 });
