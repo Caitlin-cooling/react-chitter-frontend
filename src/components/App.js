@@ -7,11 +7,11 @@ export default class App extends Component {
     super(props);
     this.state = {
       handle: null,
-      password: '',
+      password: null,
       error: null,
       handleInProgress: '',
       passwordProgress: '',
-      postPeep: false,
+      postPeepState: false,
       showPeepsState: false,
       peeps: null,
       peepsAreLoaded: false
@@ -36,7 +36,7 @@ export default class App extends Component {
       },
       body: JSON.stringify({ user: { handle, password } }),
     })
-    .then (res => res.json())
+    .then (result => result.json())
     .then (
       (result) => {
         this.setState({handle: handle});
@@ -59,7 +59,7 @@ export default class App extends Component {
      },
      body: JSON.stringify({ session: { handle, password } }),
    })
-   .then (res => res.json())
+   .then (result => result.json())
    .then (
      (result) => {
        this.setState({handle: handle});
@@ -90,10 +90,8 @@ export default class App extends Component {
   }
 
   triggerPostPeepState(e) {
-    console.log('post peeps clicked')
-
     e.preventDefault();
-    this.setState({postPeep:true})
+    this.setState({postPeepState:true})
   }
 
   handleHandleChange(event) {
@@ -118,7 +116,7 @@ export default class App extends Component {
         <Peeps
           handleShowPeeps={this.handleShowPeeps}
           triggerPostPeepState={this.triggerPostPeepState}
-          postPeepState={this.state.postPeep}
+          postPeepState={this.state.postPeepState}
           showPeepsState={this.state.showPeepsState}
           peeps={this.state.peeps}
           isLoaded={this.state.peepsAreLoaded}

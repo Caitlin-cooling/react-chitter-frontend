@@ -2,12 +2,12 @@ import React from 'react';
 
 export var Peeps = function(props) {
     if(props.postPeepState) {
-      return <div>
-        <PostPeepForm/>
-      </div>
+      return <div><PostPeepForm/></div>
     } else if (props.showPeepsState) {
-      return <div>
-        <ShowPeeps isLoaded={props.isLoaded} peeps={props.peeps}/>
+      return <div><ShowPeeps
+          isLoaded={props.isLoaded}
+          peeps={props.peeps}
+        />
       </div>
     } else {
        return <div>
