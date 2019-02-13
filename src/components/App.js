@@ -11,13 +11,17 @@ export default class App extends Component {
       error: null,
       handleInProgress: '',
       passwordProgress: '',
-      postPeep: false
+      postPeep: false,
+      showPeepsState: false,
+      peeps: null,
+      peepsAreLoaded: false
     }
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.triggerPostPeepState = this.triggerPostPeepState.bind(this);
     this.handleHandleChange = this.handleHandleChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleShowPeeps = this.handleShowPeeps.bind(this);
   }
 
   handleSignUp(e) {
@@ -68,18 +72,27 @@ export default class App extends Component {
 
   handleShowPeeps(e) {
     e.preventDefault();
+    console.log('peeps handled')
+
     fetch('https://chitter-backend-api.herokuapp.com/peeps')
     .then(res => res.json())
     .then(
-      (peeps) => {
-        console.log('peeps', peeps)
+      (result) => {
+        this.setState({
+          showPeepsState: true,
+          peeps: result,
+          peepsAreLoaded: true
+        })
       },
       (error) => {
-        console.error('Error', error);
-    });
+        this.setState({error: error});
+      }
+    )
   }
 
   triggerPostPeepState(e) {
+    console.log('post peeps clicked')
+
     e.preventDefault();
     this.setState({postPeep:true})
   }
@@ -107,6 +120,9 @@ export default class App extends Component {
           handleShowPeeps={this.handleShowPeeps}
           triggerPostPeepState={this.triggerPostPeepState}
           postPeepState={this.state.postPeep}
+          showPeepsState={this.state.showPeepsState}
+          peeps={this.state.peeps}
+          isLoaded={this.state.peepsAreLoaded}
         />
       </div>
     );

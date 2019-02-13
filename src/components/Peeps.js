@@ -1,9 +1,14 @@
 import React from 'react';
 
 export var Peeps = function(props) {
-    if(props.postPeepState === true) {
+  console.log(props)
+    if(props.postPeepState) {
       return <div>
         <PostPeepForm/>
+      </div>
+    } else if (props.showPeepsState) {
+      return <div>
+        <ShowPeeps isLoaded={props.isLoaded} peeps={props.peeps}/>
       </div>
     } else {
        return <div>
@@ -15,6 +20,14 @@ export var Peeps = function(props) {
 
 export var ViewPeeps = function(props) {
   return <button onClick={props.handleShowPeeps}>View Peeps</button>
+}
+
+export var ShowPeeps = function(props) {
+  if (!props.isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return <ul><li>{props.peeps}</li></ul>
+  }
 }
 
 export var PostPeep = function(props) {
