@@ -10,10 +10,12 @@ export default class App extends Component {
       password: '',
       error: null,
       handleInProgress: '',
-      passwordProgress: ''
+      passwordProgress: '',
+      postPeep: false
     }
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
+    this.triggerPostPeepState = this.triggerPostPeepState.bind(this);
     this.handleHandleChange = this.handleHandleChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
@@ -77,6 +79,11 @@ export default class App extends Component {
     });
   }
 
+  triggerPostPeepState(e) {
+    e.preventDefault();
+    this.setState({postPeep:true})
+  }
+
   handleHandleChange(event) {
     this.setState({handleInProgress:event.target.value})
   }
@@ -96,7 +103,11 @@ export default class App extends Component {
           handleHandleChange={this.handleHandleChange}
           handlePasswordChange={this.handlePasswordChange}
         />
-        <Peeps handleShowPeeps={this.handleShowPeeps}/>
+        <Peeps
+          handleShowPeeps={this.handleShowPeeps}
+          triggerPostPeepState={this.triggerPostPeepState}
+          postPeepState={this.state.postPeep}
+        />
       </div>
     );
   }
