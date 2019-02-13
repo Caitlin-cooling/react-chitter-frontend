@@ -42,9 +42,14 @@ describe('PostPeep', () => {
 
 describe('PostPeepForm', () => {
   const form = shallow(<PostPeepForm/>)
+  const confirmation = shallow(<PostPeepForm isPeep='Hi there'/>)
 
   it('returns a form to fill in to create peep', () => {
     expect(form).toContainReact(<textarea placeholer='What would you like to say?'></textarea>)
+  });
+
+  it('returns peep posted if a peep has been posted', () => {
+    expect(confirmation).toContainReact(<div>Peep Posted!</div>)
   });
 });
 

@@ -2,7 +2,14 @@ import React from 'react';
 
 export var Peeps = function(props) {
     if(props.postPeepState) {
-      return <div><PostPeepForm/></div>
+      return <div>
+          <PostPeepForm
+            isPeep={props.isPeep}
+            handlePostPeep={props.handlePostPeep}
+            handlePeepChange={props.handlePeepChange}
+          />
+          <ViewPeeps handleShowPeeps={props.handleShowPeeps}/>
+        </div>
     } else if (props.showPeepsState) {
       return <div><ShowPeeps
           isLoaded={props.isLoaded}
@@ -38,8 +45,12 @@ export var PostPeep = function(props) {
 }
 
 export var PostPeepForm = function(props) {
-  return <div>
-    <textarea placeholer='What would you like to say?'></textarea>
-    <button>Peep!</button>
-  </div>
+  if (props.isPeep) {
+    return <div>Peep Posted!</div>
+  } else {
+    return <form>
+      <textarea onChange={props.handlePeepChange} placeholder='What would you like to say?'></textarea>
+      <button onClick={props.handlePostPeep}>Peep!</button>
+    </form>
+  }
 }

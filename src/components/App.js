@@ -8,20 +8,24 @@ export default class App extends Component {
     this.state = {
       handle: null,
       password: null,
+      peep: null,
       error: null,
       handleInProgress: '',
       passwordProgress: '',
       postPeepState: false,
       showPeepsState: false,
       peeps: null,
-      peepsAreLoaded: false
+      peepsAreLoaded: false,
+      peepProgress: null
     }
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.triggerPostPeepState = this.triggerPostPeepState.bind(this);
     this.handleHandleChange = this.handleHandleChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handlePeepChange = this.handlePeepChange.bind(this);
     this.handleShowPeeps = this.handleShowPeeps.bind(this);
+    this.handlePostPeep = this.handlePostPeep.bind(this);
   }
 
   handleSignUp(e) {
@@ -38,12 +42,8 @@ export default class App extends Component {
     })
     .then (result => result.json())
     .then (
-      (result) => {
-        this.setState({handle: handle});
-      },
-      (error) => {
-        this.setState({error: error});
-      }
+      (result) => {this.setState({handle: handle})},
+      (error) => {this.setState({error: error})}
     )
   }
 
@@ -65,9 +65,7 @@ export default class App extends Component {
        this.setState({handle: handle});
        this.setLocalStorage(result)
      },
-     (error) => {
-       this.setState({error: error});
-     }
+     (error) => {this.setState({error: error})}
    )
   }
 
@@ -80,7 +78,7 @@ export default class App extends Component {
     e.preventDefault();
 
     fetch('https://chitter-backend-api.herokuapp.com/peeps')
-    .then(res => res.json())
+    .then(result => result.json())
     .then(
       (result) => {
         this.setState({
@@ -89,9 +87,28 @@ export default class App extends Component {
           peepsAreLoaded: true
         })
       },
-      (error) => {
-        this.setState({error: error});
-      }
+      (error) => {this.setState({error: error})}
+    )
+  }
+
+  handlePostPeep(e) {
+    const body = this.state.peepProgress;
+    const userId = localStorage.getItem('user_id');
+    const sessionKey = localStorage.getItem('session_key');
+    e.preventDefault();
+
+    fetch('https://chitter-backend-api.herokuapp.com/peeps', {
+      method: 'post',
+      headers: {
+        Authorization: `Token token=${sessionKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ peep: { user_id: userId, body } }),
+    })
+    .then(result => result.json())
+    .then(
+      (result) => {this.setState({peep:body})},
+      (error) => {this.setState({error:error})}
     )
   }
 
@@ -106,6 +123,10 @@ export default class App extends Component {
 
   handlePasswordChange(event) {
     this.setState({passwordProgress:event.target.value})
+  }
+
+  handlePeepChange(event){
+    this.setState({peepProgress:event.target.value})
   }
 
   render() {
@@ -126,6 +147,9 @@ export default class App extends Component {
           showPeepsState={this.state.showPeepsState}
           peeps={this.state.peeps}
           isLoaded={this.state.peepsAreLoaded}
+          isPeep={this.state.peep}
+          handlePeepChange={this.handlePeepChange}
+          handlePostPeep={this.handlePostPeep}
         />
       </div>
     );
