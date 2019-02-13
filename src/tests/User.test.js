@@ -12,6 +12,6 @@ describe('User', () => {
 
   it('renders Greeting when no props are given', () => {
     const user = shallow(<User handle='Caitlin'/>)
-    expect(user).toContainReact(<Greeting/>)
+    expect(user).toContainReact(<Greeting name='Caitlin'/>)
   });
 });
