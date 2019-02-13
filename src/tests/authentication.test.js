@@ -8,11 +8,8 @@ import { shallow } from 'enzyme';
 describe('Authentication', () => {
   const form = shallow(<Authentication/>);
 
-  it('renders a sign up form', () => {
+  it('renders sign up and sign in forms', () => {
     expect(form).toContainReact(<SignUp/>);
-  });
-
-  it('renders a sign in form', () => {
     expect(form).toContainReact(<SignIn/>);
   });
 });
@@ -29,12 +26,14 @@ describe('SignUp', () => {
 
   it('allows a user to enter their details, then greets them', () => {
     const handle = form.find('input').first();
+    const password = form.find('input').last();
     const submit = form.find('button').first();
-    console.log('handle', handle)
-    console.log('submit', submit)
 
     handle.simulate('change', {
-      target: { value: 'hjvygugyyg' }
+      target: { value: 'fgfdggdfg' }
+    });
+    password.simulate('change', {
+      target: { value: 'caitlin' }
     });
     submit.simulate('click');
     expect(user).toContainReact(<Greeting/>)
