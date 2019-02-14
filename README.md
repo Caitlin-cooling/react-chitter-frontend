@@ -1,21 +1,17 @@
 # Chitter Frontend
-A small Twitter clone that will allow the users to post messages to a public stream. This is the frontend to a backend API that is hosted it on Heroku.
-
-Your task is to build a front-end single-page-app to interface with this API. You can do this in any framework you like, or in pure Javascript. The API documentation is [here](https://github.com/makersacademy/chitter_api_backend).
+A small Twitter clone that will allow the users to post messages to a public stream. This is the frontend to a backend API that is hosted it on Heroku. The API documentation is [here](https://github.com/makersacademy/chitter_api_backend).
 
 Here are some interactions the API supports. Implement as many as you see fit.
 
-Creating Users
-Logging in
-Posting Peeps
-Viewing all Peeps (I suggest you start here)
-Viewing individual Peeps
-Deleting Peeps
-Liking Peeps
-Unliking Peeps
-We are looking for well tested, easy to read, easy to change code. This is more important than the number of interactions you implement.
+* Creating Users
+* Logging in
+* Posting Peeps
+* Viewing all Peeps (I suggest you start here)
+* Viewing individual Peeps
+* Deleting Peeps
+* Liking Peeps
+* Unliking Peeps
 
-Note that others may be doing the same task at the same time, so the data may change as you are using it.
 
 ## Using the app
 
@@ -41,3 +37,4 @@ ESLint has been used to lint, and any errors will show in the console while the 
 * Snap shot testing
 * Feature Testing
 * Handle errors
+* Fix view peeps button on post peep
